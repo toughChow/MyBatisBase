@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.qingshixun.project.dao.UserDao">
+
+	<select id="findById" parameterType="_int" resultType="com.qingshixun.project.model.User">
+		select
+			*
+		from
+			qsx_mybatis
+		where
+			id=#{id}
+	</select>
+	
+	<select id="findAll" resultType="com.qingshixun.project.model.User">
+		select
+			*
+		from
+			qsx_mybatis
+	</select>
+	
+	<update id="updateUser" parameterType="com.qingshixun.project.model.User">
+		update
+			qsx_mybatis
+		set
+			username=#{username},
+			age=#{age},
+			address=#{address}
+		where
+			id=#{id}
+	</update>
+	
+	<insert id="addUser" parameterType="com.qingshixun.project.model.User">
+		insert into
+			qsx_mybatis(username,age,address)
+		values(#{username},#{age},#{address})
+	</insert>
+	
+	<delete id="deleteUser" parameterType="_int">
+		delete from
+			qsx_mybatis
+		where
+			id=#{id}
+	</delete>
+	
+</mapper>
